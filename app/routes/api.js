@@ -7,7 +7,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 // connection configurations
-const mc = mysql.createConnection({
+/*const mc = mysql.createConnection({
     host: 'inventorydatabase.cisctc4b8ieq.ap-south-1.rds.amazonaws.com',
     user: 'rajmvjn',
     password: 'myamazon',
@@ -15,12 +15,12 @@ const mc = mysql.createConnection({
 });
 
 // connect to database
-mc.connect();
+mc.connect();*/
 
 router.post('/api/authenticate', function(req, res) {
     var userData = req.body;
 
-    mc.query("SELECT id,name FROM user WHERE uname=? AND pwd = ?;", [userData.uname, userData.pwd], function (error, results, fields) {
+   /* mc.query("SELECT id,name FROM user WHERE uname=? AND pwd = ?;", [userData.uname, userData.pwd], function (error, results, fields) {
         if (error){
             throw error;
         } else{
@@ -30,7 +30,9 @@ router.post('/api/authenticate', function(req, res) {
                 return res.send({ error: true, data: results, message: 'User authentication failed' });
             }
         }
-    });
+    });*/
+	
+	return res.send({ error: false, data: {}, message: 'User authenticated' });
 
 });
 
